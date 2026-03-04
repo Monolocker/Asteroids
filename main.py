@@ -14,12 +14,15 @@ def main():
     # Start infinite game loop 
     while True:
         log_state()
-        
+
         # Event handling
         for event in pygame.event.get():
             # Exit loop if window is closed
             if event.type == pygame.QUIT:
                 return
+
+        # Update, then render
+        player.update(dt)
 
         screen.fill("black")
         player.draw(screen) # Re-render player on screen each frame
