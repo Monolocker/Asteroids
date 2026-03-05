@@ -8,8 +8,16 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+
+    # Create groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    # Add Player class to groups before player object instance creation
+    Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # Instantiate player object
-    dt = 0 # Delta time
+
+    dt = 0
 
     # Start infinite game loop 
     while True:
@@ -22,11 +30,14 @@ def main():
                 return
 
         # Update, then render
-        player.update(dt)
+        updatable.update(dt)
 
         screen.fill("black")
-        player.draw(screen) # Re-render player on screen each frame
-        pygame.display.flip() # Refresh screen to show updates
+        
+        for obj in drawable:
+            obj.draw(screen)
+
+        pygame.display.flip() # Refresh screen 
 
         # Limit framerate to 60 FPS, convert ms to s
         dt = clock.tick(60) / 1000 
