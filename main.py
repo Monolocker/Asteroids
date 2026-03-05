@@ -4,6 +4,7 @@ from constants import *
 from logger import log_state, log_event
 from circleshape import CircleShape
 from player import Player
+from shot import Shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 
@@ -17,6 +18,7 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     # Add Player class to groups before player object instance creation
     Player.containers = (updatable, drawable)
@@ -29,6 +31,7 @@ def main():
     AsteroidField.containers = (updatable, )
     asteroid_field = AsteroidField()
 
+    Shot.containers = (shots, updatable, drawable)
 
     # Start infinite game loop 
     while True:
@@ -48,7 +51,6 @@ def main():
                 log_event("player_hit")
                 print("Game Over!")
                 sys.exit()
-
 
         screen.fill("black")
         
