@@ -1,6 +1,7 @@
 import pygame
+import sys
 from constants import * 
-from logger import log_state
+from logger import log_state, log_event
 from circleshape import CircleShape
 from player import Player
 from asteroid import Asteroid
@@ -41,6 +42,13 @@ def main():
 
         # Update, then render
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            if player.collides_with(asteroid):
+                log_event("player_hit")
+                print("Game Over!")
+                sys.exit()
+
 
         screen.fill("black")
         
