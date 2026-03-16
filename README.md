@@ -1,6 +1,6 @@
 # Asteroids 
 
-Based on the classic Asteroids game, this project was built using Python and Pygame as part of the [Boot.dev](https://www.boot.dev) curriculum to enhance OOP skills. This project uses `uv` for lightning-fast dependency managament. 
+Based on the classic Asteroids game, this project was built using Python and Pygame as part of the [Boot.dev](https://www.boot.dev) curriculum to enhance OOP skills. This project uses the `uv` project/package manager.
 
 ## Features
 
@@ -11,12 +11,19 @@ Based on the classic Asteroids game, this project was built using Python and Pyg
 
 ## Prerequisites 
 - Python 3.x (Python 3.13 recommended)
-- Pygame Library
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed
 
 ## Installation 
+```bash
+# Clone the repo 
+git clone https://github.com/Monolocker/Asteroids.git 
 
-1. Clone the repo:
-    ```bash 
-    git clone https://github.com/Monolocker/Asteroids.git
+# Navigate to the project folder 
+cd Asteroids
 
+# Install dependencies and setup virtual environment 
+uv sync 
+
+# Run the game using `uv`
+uv run main.py
 
